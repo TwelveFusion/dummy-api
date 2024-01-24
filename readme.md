@@ -1,6 +1,6 @@
 # Dummy API 
 
-A simple app for testing with API data built with Node.js, Express and TypeScript.
+A simple app for testing API with dummy data built with Node.js, Express and TypeScript.
 
 ## Table of Contents
 
@@ -65,6 +65,10 @@ The app will run at [http://localhost:5000](http://localhost:5000).
 - Delete User:
   - Endpoint: `DELETE /api/users/:id`
   - Description: Delete a specific user by ID.
+
+- Reset API Data:
+  - Endpoint: `POST /api/users/reset`
+  - Description: Resets the api data to the initial user data.
 
 ## Project Structure
 

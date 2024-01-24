@@ -20,4 +20,7 @@ router.put('/api/users/:id', userController.updateUserById);
 // Delete user by ID
 router.delete('/api/users/:id', userController.deleteUserById);
 
+// Reset user data to default and redirect to /api/users
+router.post('/api/users/reset', userController.resetUsersRoute);
+
 export default router;

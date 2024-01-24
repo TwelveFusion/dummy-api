@@ -76,3 +76,17 @@ export const deleteUserById = async (req: Request, res: Response) => {
 
   res.json({ message: 'User deleted successfully' });
 };
+
+export const resetUsersRoute = async (req: Request, res: Response) => {
+    // Reset users to default dataset
+    users = [
+      { id: 1, name: 'John Doe' },
+      { id: 2, name: 'Jane Doe' },
+    ];
+  
+    // Update JSON file
+    writeUsersToFile();
+  
+    // Redirect to /api/users immediately after resetting
+    res.redirect(303, '/api/users');
+  };
