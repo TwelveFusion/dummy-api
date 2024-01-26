@@ -8,7 +8,7 @@ interface User extends BaseModel {
 
 class UserController extends GenericController<User> {}
 
-const userController = new UserController('users.json');
+const userController = new UserController('data/users.json');
 
 export const getAllUsers = userController.getAll;
 export const getUserById = userController.getById;
