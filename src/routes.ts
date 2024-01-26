@@ -5,22 +5,12 @@ import * as userController from './controller/userController';
 
 const router = express.Router();
 
-// Read all users
+// User routes
 router.get('/api/users', userController.getAllUsers);
-
-// Read user by ID
 router.get('/api/users/:id', userController.getUserById);
-
-// Create a new user
 router.post('/api/users', userController.createUser);
-
-// Update user by ID
 router.put('/api/users/:id', userController.updateUserById);
-
-// Delete user by ID
 router.delete('/api/users/:id', userController.deleteUserById);
-
-// Reset user data to default and redirect to /api/users
 router.post('/api/users/reset', userController.resetUsersRoute);
 
 export default router;
