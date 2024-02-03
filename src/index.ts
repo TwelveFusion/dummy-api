@@ -1,14 +1,22 @@
 // index.ts
 
 import express from 'express';
+import cors from 'cors';
 import bodyParser from 'body-parser';
 import routes from './routes';
 import { readJsonFile, writeJsonFile } from './util/jsonUtil';
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
+
+// Use CORS middleware
+app.use(cors({
+    origin: '*', // Set the allowed origin to '*'
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // Enable cookies and HTTP authentication
+}));
 
 // Apply routes
 app.use(routes);
