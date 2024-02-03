@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(routes);
 
 // Read initial data on startup
-const initialUsers = readJsonFile('users.json');
+const initialUsers = readJsonFile('data/users.json');
 
 // Write initial data to the file (if it doesn't exist)
 if (initialUsers.length === 0) {
