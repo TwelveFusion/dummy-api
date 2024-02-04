@@ -92,57 +92,57 @@ The data files are located in the directory `data`.
    Define the properties that your model should have. In this example, a `Post` has an `id`, `title`, and `content`.
 
 2.	**Update Controller to Use the New Model:**
-If you want to create CRUD operations for the new model, you’ll need to create the controller class for that model and extend extend it with the `GenericController`. In the `Post` model example, create a `PostController` class and extend it with the `GenericController` class from the `BaseController`.
-```
-// postController.ts
+    If you want to create CRUD operations for the new model, you’ll need to create the controller class for that model and extend extend it with the `GenericController`. In the `Post` model example, create a `PostController` class and extend it with the `GenericController` class from the `BaseController`.
+    ```typescript
+    // postController.ts
 
-import { GenericController } from './baseController';
-import { Post } from './postModel';
+    import { GenericController } from './baseController';
+    import { Post } from './postModel';
 
-class PostController extends GenericController<Post> {
-  constructor(fileName: string, initialData?: Post[]) {
-    super(fileName, initialData);
-    this.loadInitialData();
-  }
+    class PostController extends GenericController<Post> {
+        constructor(fileName: string, initialData?: Post[]) {
+            super(fileName, initialData);
+            this.loadInitialData();
+        }
 
-  private loadInitialData() {
-	// Add any specific initialization logic for posts if needed 
-  }
-}
-```
+        private loadInitialData() {
+            // Add any specific initialization logic for posts if needed 
+        }
+    }
+    ```
 
-Create a new instance of the `PostController` class with a `posts.json` data file and export its methods. 
+    Create a new instance of the `PostController` class with a `posts.json` data file and export its methods. 
 
-```
-const postController = new PostController('data/posts.json'); 
+    ```typescript
+    const postController = new PostController('data/posts.json'); 
 
-export  const getAllPosts = postController.getAll; 
-export  const getPostById = postController.getById; 
-export  const createPost = postController.create; 
-export  const updatePostById = postController.updateById; 
-export  const deletePostById = postController.deleteById; 
-export  const resetPostsRoute = postController.resetRoute;
-```
-Update the properties and methods based on the structure of your new model.
+    export  const getAllPosts = postController.getAll; 
+    export  const getPostById = postController.getById; 
+    export  const createPost = postController.create; 
+    export  const updatePostById = postController.updateById; 
+    export  const deletePostById = postController.deleteById; 
+    export  const resetPostsRoute = postController.resetRoute;
+    ```
+    Update the properties and methods based on the structure of your new model.
 
-**Note:** If a `posts.json`file does not exists, one will be created when a new instance of the `postController` is created.
+    **Note:** If a `posts.json`file does not exists, one will be created when a new instance of the `postController` is created.
 
 3. **Update Routes to Include the New Model:**
 
-If you want to expose endpoints for the new model, update the `routes.ts` file to include the following:
+    If you want to expose endpoints for the new model, update the `routes.ts` file to include the following:
 
-```
-// Import the new controller
-import * as postController from  './controller/postController';
+    ```typescript
+    // Import the new controller
+    import * as postController from  './controller/postController';
 
-// Define the Post routes using the postController methods
-router.get('/api/posts', postController.getAllPosts);
-router.get('/api/posts/:id', postController.getPostById);
-router.post('/api/posts', postController.createPost);
-router.put('/api/posts/:id', postController.updatePostById);
-router.delete('/api/posts/:id', postController.deletePostById);
-router.post('/api/posts/reset', postController.resetPostRoute);
-```
+    // Define the Post routes using the postController methods
+    router.get('/api/posts', postController.getAllPosts);
+    router.get('/api/posts/:id', postController.getPostById);
+    router.post('/api/posts', postController.createPost);
+    router.put('/api/posts/:id', postController.updatePostById);
+    router.delete('/api/posts/:id', postController.deletePostById);
+    router.post('/api/posts/reset', postController.resetPostRoute);
+    ```
 
 ## Project Structure
 
